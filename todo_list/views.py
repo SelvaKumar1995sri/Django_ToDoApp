@@ -26,17 +26,7 @@ def delete(request, item_id):
     messages.success(request, ('The item has been deleted successfully!'))
     return redirect('home')
 
-# def cross_off(request, item_id):
-#     item = List.objects.get(pk=item_id)
-#     item.completed = True
-#     item.save()
-#     return redirect('home')
 
-# def uncross(request, item_id):
-#     item = List.objects.get(pk=item_id)
-#     item.completed = False
-#     item.save()
-#     return redirect('home')
 
 def edit(request, item_id):
     if request.method == "POST":
