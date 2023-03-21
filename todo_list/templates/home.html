@@ -34,14 +34,14 @@
                             <td class="striker text-center">{{ thing.item }}</td>
                             {% comment %} <td class="text-center"><a class="btn btn-primary" href="{% url 'uncross' thing.id %}">Uncross</a></td> {% endcomment %}
                             <td class="text-center"><a class="btn btn-warning" href="{% url 'edit' thing.id %}">Edit</a></td>
-                            <td class="text-center"><a class="btn btn-danger" href="{% url 'delete' thing.id %}">Delete</a></td>
+                            <td class="text-center"><a class="btn btn-danger" href="{% url 'delete' thing.id %}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a></td>
                         </tr>
                     {% else %}
                     <tr>
                             <td class="text-center">{{ thing.item }}</td>
                             {% comment %} <td class="text-center"><a class="btn btn-primary" href="{% url 'cross_off' thing.id %}">Cross off</a></td> {% endcomment %}
                             <td class="text-center"><a class="btn btn-warning" href="{% url 'edit' thing.id %}">Edit</a></td>
-                            <td class="text-center"><a class="btn btn-danger" href="{% url 'delete' thing.id %}">Delete</a></td>
+                            <td class="text-center"><a class="btn btn-danger" href="{% url 'delete' thing.id %}" onclick="return confirm('Are you sure, you want to delete it?')">Delete</a></td>
                         </tr>
                     {% endif %}
                 {% endfor %}
