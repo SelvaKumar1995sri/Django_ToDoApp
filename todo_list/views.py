@@ -34,7 +34,7 @@ def edit(request, item_id):
         form = ListForm(request.POST or None, instance=item)
         if form.is_valid():
             form.save()
-            messages.success(request, ('The item has been edited successfully!'))
+            messages.success(request, ('The item has been edited successful!'))
             return redirect('home')   
     else:
         item = List.objects.get(pk=item_id)
