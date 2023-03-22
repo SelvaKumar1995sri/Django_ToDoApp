@@ -3,18 +3,19 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import List
 from .forms import ListForm
+from django.db.models import Q
 
 
 def home(request):
     if request.method == "POST":
-        form = ListForm(request.POST or None)
+        form = ListForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, ('The item has been added to list successfully!'))
             all_items = List.objects.all
             return render(request, 'home.html', {'all_items': all_items})    
     else:
-        all_items = List.objects.all
+        all_items = List.objects.all()
         return render(request, 'home.html', {'all_items': all_items})
 
 def about(request):
@@ -39,3 +40,16 @@ def edit(request, item_id):
     else:
         item = List.objects.get(pk=item_id)
         return render(request, 'edit.html', {'item': item})
+
+
+from django.views.generic import TemplateView, ListView
+
+class SearchResultsView(ListView):
+    model = List
+    template_name = 'search.html'
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = List.objects.filter(
+            Q(item__icontains=query)
+        )
+        return object_list
