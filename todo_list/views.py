@@ -39,3 +39,7 @@ def edit(request, item_id):
     else:
         item = List.objects.get(pk=item_id)
         return render(request, 'edit.html', {'item': item})
+
+
+
+    
