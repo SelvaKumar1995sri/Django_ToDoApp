@@ -27,8 +27,8 @@
                     <th class="text-center" scope="col">Delete</th>
                     </tr>
                 </thead>
-                <tbody>
-                {% for thing in all_items %}
+                
+                 {% for thing in all_items %}
                     {% if thing.completed %}
                         <tr class="table-secondary">
                             <td class="striker text-center">{{ thing.item }}</td>
@@ -44,8 +44,7 @@
                             <td class="text-center"><a class="btn btn-danger" href="{% url 'delete' thing.id %}">Delete</a></td>
                         </tr>
                     {% endif %}
-                {% endfor %}
-                </tbody>
+                {% endfor %} 
             </table>
         </div>
         {% endif %}

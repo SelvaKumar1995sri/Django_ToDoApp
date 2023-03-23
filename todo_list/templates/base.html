@@ -76,7 +76,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">ToDo App</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -88,7 +88,12 @@
             </li>
             </ul>
 
-            <div class="dropdown">
+                  <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                  </form>
+
+            <!-- <div class="dropdown">
               <button onclick="myFunction()" class="dropbtn">Search</button>
               <div id="myDropdown" class="dropdown-content">
                 <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
@@ -96,7 +101,7 @@
                       <a href="#thing.item">{{ thing.item }}</a>
                        
                 {% endfor %}
-              </div>
+              </div> -->
             </div>
             
             <script>

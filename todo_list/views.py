@@ -3,18 +3,23 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import List
 from .forms import ListForm
+from django.db.models import Q
 
 
 def home(request):
-    if request.method == "POST":
+    if 'q' in request.GET:
+        q = request.GET['q']
+        all_items = List.objects.filter(item__icontains = q)
+        return render(request, 'home.html', {'all_items': all_items})
+    elif request.method == "POST":
         form = ListForm(request.POST or None)
         if form.is_valid():
             form.save()
             messages.success(request, ('The item has been added to list successfully!'))
-            all_items = List.objects.all
+            all_items = List.objects.all()
             return render(request, 'home.html', {'all_items': all_items})    
     else:
-        all_items = List.objects.all
+        all_items = List.objects.all()
         return render(request, 'home.html', {'all_items': all_items})
 
 def about(request):
